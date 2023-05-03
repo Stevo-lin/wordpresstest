@@ -3,16 +3,19 @@ kind: Deployment
 metadata:
   labels:
     app: mysql-wordpress
+    eu-west-1: clustername
   name: mysql
 spec:
   replicas: {{.Values.replicadbCount}}
   selector:
     matchLabels:
       app: backend
+      eu-west-1: clustername
   template:
     metadata:
       labels:
         app: backend
+        eu-west-1: clustername
     spec:
       volumes:
       - name: mysqlpod-pvc
