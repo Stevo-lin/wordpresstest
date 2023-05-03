@@ -3,16 +3,19 @@ kind: Deployment
 metadata:
   labels:
     app: mysql-wordpress
+    eu-west-1: clustername
   name: wordpress
 spec:
   replicas: {{.Values.replicawpCount}}
   selector:
     matchLabels:
       app: frontend
+      eu-west-1: clustername
   template:
     metadata:
       labels:
         app: frontend
+        eu-west-1: clustername
     spec:
       containers:
       - image: wordpress:5.1.1-php7.3-apache
